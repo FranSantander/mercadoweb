@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <title>Document</title>
+</head>
+
+<body>
+    {{>menu}}
+
+    <div class="container row mx-auto">
+        {{>mensaje}}
+    </div>
+
+    {{>modal}}
+
+
+    <script src="/bootstrapjs/bootstrap.bundle.min.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
+
+    <script>
+        $('#carrito').on("click", function (e) {
+            e.preventDefault()
+            $('#modal').toggle();
+        });
+        $('#cierre').on("click", function (e) {
+            e.preventDefault()
+            $('#modal').toggle()
+        })
+
+
+    </script>
+    <script>
+        { { #each productos } }
+        let htmlAppend{{ this}} = `<img src="{{this}}.png" alt="{{this}}" width="80px" height="80px">`
+        let btn{{ this}} = document.getElementById("{{this}}")
+    btn{ { this } }.addEventListener("click", htmlInsert{{ this}})
+        function htmlInsert{ { this } } () {
+            document.getElementById("{{this}}1").innerHTML = htmlAppend{ { this } }
+        }
+        { { /each}}
+    </script>
+</body>
+
+</html>
